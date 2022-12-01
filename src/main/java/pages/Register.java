@@ -1,10 +1,12 @@
 package pages;
 
 import model.RegisterUser;
+import org.checkerframework.checker.regex.qual.Regex;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import utils.Utils;
 
 public class Register extends BasePage{
@@ -72,11 +74,23 @@ public class Register extends BasePage{
     }
 
     public boolean isUserRegistered(){
-        return matchesExpectedText(myAccountPageTitle, "My account") && matchesExpectedText(myAccountMenuProfile, "Profile");
+        return matchesExpectedText(myAccountPageTitle, "My account") && matchesExpectedText(myAccountMenuProfile, "Profile + nesto");
     }
 
     public String getCurrentUrl(){
         return driver.getCurrentUrl();
+    }
+
+    //bad practice
+    public Register verifyWelcomePageTitle(){
+        Assert.assertTrue(matchesExpectedText(myAccountPageTitle, "My account"));
+        return this;
+    }
+
+    //bad practice
+    public Register verifyWelcomePageProfileText(){
+        Assert.assertTrue(matchesExpectedText(myAccountMenuProfile, "Profile"));
+        return this;
     }
 
 

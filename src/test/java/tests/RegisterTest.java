@@ -1,11 +1,15 @@
 package tests;
 
+import listeners.RetryAnalyzer;
+import listeners.TestListener;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.Login;
 import pages.Register;
 
+@Listeners(TestListener.class)
 public class RegisterTest extends BaseTest{
 
 
@@ -18,14 +22,22 @@ public class RegisterTest extends BaseTest{
         login = new Login(driver);
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     public void registerUserTest(){
-        String expectedUrl = "https://practicesoftwaretesting.com/#/account";
+        String expectedUrl = "https://practicesoftwaretesting.com/#/accountfdewqf";
         register.goToRegisterPage()
                 .registerUser();
         login.loginUser(register.getUsername(), register.getPassword());
-        Assert.assertTrue(register.isUserRegistered());
-        Assert.assertEquals(register.getCurrentUrl(), expectedUrl);
+
+        softAssert.assertTrue(register.isUserRegistered());
+        softAssert.assertEquals(register.getCurrentUrl(), expectedUrl);
+        softAssert.assertAll();
+    }
+
+    @Test
+    public void registerVerifyUserIsRegistered(){
+       register.verifyWelcomePageProfileText()
+               .verifyWelcomePageProfileText();
     }
 
 
