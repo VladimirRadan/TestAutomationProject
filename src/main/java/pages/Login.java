@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -18,6 +19,7 @@ public class Login extends BasePage{
         super(driver);
     }
 
+    @Step("Logging in user")
     public Login loginUser(String username, String password){
         typeIn(emailField, username);
         typeIn(passwordField, password);

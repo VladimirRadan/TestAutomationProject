@@ -1,6 +1,7 @@
 package tests;
 
 import core.DriverManager;
+import core.Environment;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -15,10 +16,11 @@ public class BaseTest {
 
     @BeforeMethod
     public void setup() throws InterruptedException {
-        Thread.sleep(3000);
         driver = DriverManager.getInstance().setDriver();
-        driver.get("https://practicesoftwaretesting.com/#/");
+        Thread.sleep(3000);
+        //driver.get("https://practicesoftwaretesting.com/#/");
         softAssert = new SoftAssert();
+        new Environment(driver).openBrowser();
     }
 
     public WebDriver getDriver() {
@@ -27,7 +29,7 @@ public class BaseTest {
 
     @AfterMethod
     public void tearDown(){
-        //driver.quit();
+        driver.quit();
     }
 
 

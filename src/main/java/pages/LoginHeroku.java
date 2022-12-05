@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -28,18 +29,32 @@ public class LoginHeroku extends BasePage{
         super(driver);
     }
 
+    @Step("Logging in user")
     public void loginUserHeroku(String username, String password){
         typeIn(usernameField, username);
         typeIn(passwordField, password);
         clickOnElement(loginBtn);
     }
 
-
+    @Step("Verifying if user is logged in")
     public boolean isUserLoggedIn(){
         String expectedText = "You logged into a secure area!";
         String actualArray[] = getElement(actualText).getText().split("(?<=!)");
         String actualText = actualArray[0];
         return actualText.equals(expectedText);
+    }
+
+    public boolean isErrorMessagePresent(){
+        String actual[] = getElement(errorMessage).getText().split("(?<=!)");
+        String actualText = actual[0];
+        String expectedText = "Your username is invalid!";
+        if (actualText.equals(expectedText)){
+            logger.info("PASSED - Text found in element " + actualText + " MATCHES expected text [ " + expectedText + " ]");
+            return true;
+        }else {
+            logger.error("FAILED - Text found in element " + actualText + " DOES NOT MATCH expected text [ " + expectedText + " ]");
+        }
+        return false;
     }
 
 

@@ -22,7 +22,7 @@ public class RegisterTest extends BaseTest{
         login = new Login(driver);
     }
 
-    @Test(retryAnalyzer = RetryAnalyzer.class)
+    @Test()
     public void registerUserTest(){
         String expectedUrl = "https://practicesoftwaretesting.com/#/accountfdewqf";
         register.goToRegisterPage()
@@ -34,11 +34,11 @@ public class RegisterTest extends BaseTest{
         softAssert.assertAll();
     }
 
-    @Test
-    public void registerVerifyUserIsRegistered(){
-       register.verifyWelcomePageProfileText()
-               .verifyWelcomePageProfileText();
-    }
+//    @Test
+//    public void registerVerifyUserIsRegistered(){
+//       register.verifyWelcomePageProfileText();
+//               //.verifyWelcomePageProfileText();
+//    }
 
 
 

@@ -1,0 +1,9 @@
+pages\BasePage.class
+utils\Constants.class
+core\Environment.class
+utils\Utils.class
+model\RegisterUser.class
+pages\Register.class
+core\DriverManager.class
+pages\Login.class
+pages\LoginHeroku.class

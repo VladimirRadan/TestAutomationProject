@@ -1,0 +1,18 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 51.274 s <<< FAILURE! - in TestSuite
+tests.RegisterTest.registerUserTest  Time elapsed: 7.352 s  <<< FAILURE!
+java.lang.AssertionError: 
+The following asserts failed:
+	expected [true] but found [false],
+	expected [https://practicesoftwaretesting.com/#/accountfdewqf] but found [https://practicesoftwaretesting.com/#/account]
+	at tests.RegisterTest.registerUserTest(RegisterTest.java:34)
+
+tests.RegisterTest.registerUserTest  Time elapsed: 6.444 s  <<< FAILURE!
+java.lang.AssertionError: 
+The following asserts failed:
+	expected [true] but found [false],
+	expected [https://practicesoftwaretesting.com/#/accountfdewqf] but found [https://practicesoftwaretesting.com/#/account]
+	at tests.RegisterTest.registerUserTest(RegisterTest.java:34)
+

@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import model.RegisterUser;
 import org.checkerframework.checker.regex.qual.Regex;
 import org.openqa.selenium.By;
@@ -37,13 +38,14 @@ public class Register extends BasePage{
         super(driver);
     }
 
-    //fluent pattern
+    @Step("Navigating to register page")
     public Register goToRegisterPage(){
         clickOnElement(signInLink);
         clickOnElement(goToRegisterFormLink);
         return this;
     }
 
+    @Step("Filling in register form")
     public Register registerUser(){
         RegisterUser registerUser = new RegisterUser();
         username = registerUser.getEmail();
@@ -68,11 +70,13 @@ public class Register extends BasePage{
         return this;
     }
 
+    @Step("Country selection")
     private void selectCountry(){
         Select select = new Select(getElement(countryDropdown));
         select.selectByValue("RS");
     }
 
+    @Step("Verifying if user is registered")
     public boolean isUserRegistered(){
         return matchesExpectedText(myAccountPageTitle, "My account") && matchesExpectedText(myAccountMenuProfile, "Profile + nesto");
     }

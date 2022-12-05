@@ -1,0 +1,6 @@
+tests\RegisterTest.class
+SeleniumActionsTest.class
+tests\BaseTest.class
+tests\LoginTest.class
+listeners\RetryAnalyzer.class
+listeners\TestListener.class
